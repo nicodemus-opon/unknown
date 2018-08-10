@@ -1,0 +1,80 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/4.12.0/bootstrap-social.min.css">
+    <!-- CSS Dependencies -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="static/css/shards.min.css">
+    <link rel="stylesheet" href="static/css/opon.css">
+</head>
+
+<body id="LoginForm" class="" style="background:url('static/ook.jpg')">
+    <div class="container ">
+            <div class="alert alert-transparent" role="alert">
+                    <h2>Snap login</h2>
+                  </div>
+            
+        <div class="row">
+            <div class="col-sm">
+            </div>
+            <div class="login-form col card opon">
+                <div class="main-div card-body">
+                        <div class="text-center">
+                        <img src="static/snap.jpg" class="rounded-circle img-thumbnail text-center" height="140" width="140" alt="login">
+                        </div>   
+                        <p>Please enter your Jira user credentials</p>
+                    <form id="Login" action="" method="post">
+
+                        <div class="form-group">
+
+                            <input type="email" class="form-control" id="inputEmail" name="username" placeholder="Email Address" value="{{request.form.username}}">
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <input type="password" class="form-control" id="inputPassword" name="password" placeholder="Password" value="{{request.form.password }}">
+
+                        </div>
+                        <div class="form-group">
+
+                            <input type="text" class="form-control" id="inputServer" name="server" placeholder="Server" value="{{request.form.server }}">
+
+                        </div>
+                        <button type="submit" class="btn btn-primary">Login to Snap&rarr;</button>
+                </div>
+
+
+                </form>
+            </div>
+            <div class="col-sm">
+
+            </div>
+        </div>
+        
+    </div>
+
+    </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="static/js/shards.min.js"></script>
+    <script src="static/nico.js"></script>
+    <script src="static/https://cdn.rawgit.com/oauth-io/oauth-js/c5af4519/dist/oauth.js"></script>
+
+</body>
+
+</html>

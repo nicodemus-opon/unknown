@@ -57,14 +57,14 @@ def jira_login(servo="", user_name_="", password=""):
         return (False)
 
 
-def send_mail(toaddr="", body="", fromaddr=""):
+def send_mail(toaddr="", body="", fromaddr="",simple_name="",subject_x=""):
     # msg = str("From:",fromaddr,"To",toaddr,"Subject","SUBJECT OF THE MAIL", boddy)
-    #headers = "From: %s\r\nTo: %s\r\nSubject: %s\r\n\r\n" % (sender, to, subject)
+    headers = "From: %s\r\nTo: %s\r\nSubject: %s\r\n\r\n" % (fromaddr, toaddr, subject_x)
     msg = str(body)
     text = msg
     server.ehlo()
     server.sendmail(fromaddr, toaddr, text)
-    server.quit()
+    #server.quit()
     print("completed sending mail")
 
 
@@ -198,9 +198,9 @@ def index():
         ###list index out of range
         cvf=0
         while cvf<session["mentions_len"]:
-            to=mail_x.encode("ascii", "ignore")
-            bo=session["mentions"][cvf].encode("ascii", "ignore")
-            fr=session["names"][cvf].encode("ascii", "ignore")
+            to=mail_x.encode("UTF-8", "ignore")
+            bo=session["mentions"][cvf].encode("UTF-8", "ignore")
+            fr="cbsoftlabke@gmail.com".encode("UTF-8", "ignore")#session["names"][cvf].encode("ascii", "ignore")
             print("----------------------")
             print("to:",to)
             print("bo:",bo)

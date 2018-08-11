@@ -57,11 +57,11 @@ def jira_login(servo="", user_name_="", password=""):
         return (False)
 
 
-def send_mail(toaddr="", body="", fromaddr="",simple_name="",subject_x=""):
+def send_mail(toaddr="", body="", fromaddr="",simple_name="",subject_x="Teta"):
     # msg = str("From:",fromaddr,"To",toaddr,"Subject","SUBJECT OF THE MAIL", boddy)
-    headers = "From: %s\r\nTo: %s\r\nSubject: %s\r\n\r\n" % (fromaddr, toaddr, subject_x)
+    headers = "From: %s\r\nTo: %s\r\nSubject: %s\r\n\r\n" % (simple_name, toaddr, subject_x)
     msg = str(body)
-    text = msg
+    text = headers + msg
     server.ehlo()
     server.sendmail(fromaddr, toaddr, text)
     #server.quit()
@@ -198,19 +198,20 @@ def index():
         ###list index out of range
         cvf=0
         while cvf<session["mentions_len"]:
-            to=mail_x.encode("UTF-8", "ignore")
-            bo=session["mentions"][cvf].encode("UTF-8", "ignore")
-            fr="cbsoftlabke@gmail.com".encode("UTF-8", "ignore")#session["names"][cvf].encode("ascii", "ignore")
-            
-            to=str(to,"UTF-8")
-            bo=str(bo,"UTF-8")
-            fr=str(fr,"UTF-8")
+            to=mail_x.encode("ascii", "ignore")
+            bo=session["mentions"][cvf].encode("ascii", "ignore")
+            fr="cbsoftlabke@gmail.com".encode("ascii", "ignore")#session["names"][cvf].encode("ascii", "ignore")
+            si=session["names"][cvf].encode("ascii", "ignore")
+            to=str(to,"ascii")
+            bo=str(bo,"ascii")
+            fr=str(fr,"ascii")
+            si=str(si,"ascii")
             print("----------------------")
             print("to:",to)
             print("bo:",bo)
             print("fr:",fr)
             print("----------------------")
-            #send_mail(toaddr=to, body=bo, fromaddr=fr)
+            send_mail(toaddr=to, body=bo, fromaddr=fr,simple_name=si)
 
             try:
                 pass

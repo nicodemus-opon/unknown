@@ -201,15 +201,16 @@ def index():
             to=mail_x.encode("UTF-8", "ignore")
             bo=session["mentions"][cvf].encode("UTF-8", "ignore")
             fr="cbsoftlabke@gmail.com".encode("UTF-8", "ignore")#session["names"][cvf].encode("ascii", "ignore")
+            
+            to=str(to,"UTF-8")
+            bo=str(bo,"UTF-8")
+            fr=str(fr,"UTF-8")
             print("----------------------")
             print("to:",to)
             print("bo:",bo)
             print("fr:",fr)
             print("----------------------")
-            to=str(to,"ascii")
-            bo=str(bo,"ascii")
-            fr=str(fr,"ascii")
-            send_mail(toaddr=to, body=bo, fromaddr=fr)
+            #send_mail(toaddr=to, body=bo, fromaddr=fr)
 
             try:
                 pass

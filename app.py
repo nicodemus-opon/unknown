@@ -24,10 +24,13 @@ while True:
         api = tweepy.API(auth)
         # login in to mail
         server = smtplib.SMTP('smtp.gmail.com', 587)
+        server.set_debuglevel(1)
+        server.ehlo()
         server.starttls()
+        server.ehlo()
         server.login("cbsoftlabke@gmail.com", "blacksaint")
+        server.ehlo()
         #initialize the mentions as an empty array
-        
         print("initialization issa success")
         break
     except Exception as e:
@@ -56,10 +59,12 @@ def jira_login(servo="", user_name_="", password=""):
 
 def send_mail(toaddr="", body="", fromaddr=""):
     # msg = str("From:",fromaddr,"To",toaddr,"Subject","SUBJECT OF THE MAIL", boddy)
+    #headers = "From: %s\r\nTo: %s\r\nSubject: %s\r\n\r\n" % (sender, to, subject)
     msg = str(body)
     text = msg
+    server.ehlo()
     server.sendmail(fromaddr, toaddr, text)
-    #server.quit()
+    server.quit()
     print("completed sending mail")
 
 
@@ -177,7 +182,7 @@ def index():
         mail_x = request.form['service_email']
         tag_to_search = request.form['search_term']
         volume_of_search = request.form['search_volume']
-        print("##########")
+        print("##########-")
         print(mail_x)
         print(tag_to_search)
         print(volume_of_search)
@@ -189,14 +194,30 @@ def index():
         session["mentions_len"] =len(session["mentions"])
         ###########this is where you left off
         ###'in <string>' requires string as left operand, not int
+
         ###list index out of range
-        for cvf in range(len(session["mentions"])):
+        cvf=0
+        while cvf<session["mentions_len"]:
+            to=mail_x.encode("ascii", "ignore")
+            bo=session["mentions"][cvf].encode("ascii", "ignore")
+            fr=session["names"][cvf].encode("ascii", "ignore")
+            print("----------------------")
+            print("to:",to)
+            print("bo:",bo)
+            print("fr:",fr)
+            print("----------------------")
+            to=str(to,"ascii")
+            bo=str(bo,"ascii")
+            fr=str(fr,"ascii")
+            send_mail(toaddr=to, body=bo, fromaddr=fr)
+
             try:
-                #send_mail(toaddr=str(mail_x).encode("utf-8"), body=str(session["mentions"][cvf]).encode("utf-8"), fromaddr=str(["names"][cvf]).encode("utf-8"))
                 pass
             except Exception as e:
                 print("email error")
                 print(e)
+            cvf+=1
+
         return (render_template('index.html'))
     else:
         session["mentions"] = []
